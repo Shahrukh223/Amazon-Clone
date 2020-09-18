@@ -1,8 +1,24 @@
 import { Button } from '@material-ui/core'
 import React from 'react'
 import './CheckoutProduct.css'
+import { useStateValue } from './StateProvider'
 
 function CheckoutProduct({image, title, price, rating}) {
+
+    const[{basket} , dispatch] = useStateValue();
+
+    const removeFromBasket = () => {
+
+        //Remove from the basket
+        dispatch({
+
+            type: 'Remove_from_Basket',
+            title: title,
+
+        })
+
+    }
+
     return (
         <div className = 'checkoutProduct'>
             <img className = 'image' src={image} />
@@ -22,7 +38,7 @@ function CheckoutProduct({image, title, price, rating}) {
             ))}
         </div>
 
-        <button>Remove From Basket</button>
+        <button onClick = {removeFromBasket}>Remove From Basket</button>
         </div>
         </div>
     )
