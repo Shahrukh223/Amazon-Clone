@@ -12,7 +12,7 @@ import { useStateValue } from './StateProvider';
 
 function Header() {
 
-    const [{basket}, dispatch] = useStateValue();
+    const [{basket, user}, dispatch] = useStateValue();
 
     return (
 
@@ -38,8 +38,7 @@ function Header() {
                     </span>
                     <Link to = '/login'>
                     <span
-                        className = 'header_optionLineTwo'>
-                        Sign In
+                        className = 'header_optionLineTwo'>{user ? 'Sign Out' : 'Sign in'}
                     </span>
                     </Link>
                 </div>
